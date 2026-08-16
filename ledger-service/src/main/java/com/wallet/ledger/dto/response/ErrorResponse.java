@@ -1,4 +1,4 @@
-package com.wallet.payment.dto.response;
+package com.wallet.ledger.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

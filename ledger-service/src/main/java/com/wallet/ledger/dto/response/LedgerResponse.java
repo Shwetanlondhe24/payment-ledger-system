@@ -1,5 +1,6 @@
-package com.wallet.payment.dto.response;
+package com.wallet.ledger.dto.response;
 
+import com.wallet.ledger.enums.LedgerStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +8,5 @@ import lombok.Setter;
 @Setter
 public class LedgerResponse {
 
-    private String ledgerId;
-    private String status;
+    private LedgerStatus ledgerStatus;
 }

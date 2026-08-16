@@ -1,6 +1,5 @@
-package com.wallet.payment.dto.request;
+package com.wallet.ledger.dto.request;
 
-import com.wallet.payment.enums.PaymentType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -17,13 +16,10 @@ public class LedgerRequest {
     private String txnId;
 
     @NotBlank
-    private String sourceAccountId;
+    private String sourceAccountReference;
 
     @NotBlank
-    private String destinationAccountId;
-
-//    @NotBlank
-//    private PaymentType paymentType;
+    private String destinationAccountReference;
 
     @PositiveOrZero
     @NotNull
