@@ -5,10 +5,7 @@ import com.wallet.payment.dto.response.PaymentResponse;
 import com.wallet.payment.service.PaymentService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/payments")
@@ -21,8 +18,8 @@ public class PaymentController {
     }
 
     @PostMapping
-    public ResponseEntity<PaymentResponse> handleTxn (@Valid @RequestBody PaymentRequest req){
-        PaymentResponse res = service.processTxn(req);
+    public ResponseEntity<PaymentResponse> handleTxn (@RequestHeader("Idempotency-Key") String idempotencyKey, @Valid @RequestBody PaymentRequest req){
+        PaymentResponse res = service.processTxn(idempotencyKey, req);
         return ResponseEntity.ok().body(res);
     }
 }

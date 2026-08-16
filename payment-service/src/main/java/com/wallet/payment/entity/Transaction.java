@@ -16,6 +16,10 @@ public class Transaction extends BaseEntity{
 
     @Id
     private String txnId;
+
+    @Column(nullable = false, unique = true)
+    private String idempotencyKey;
+
     private String sourceAccountReference;
     private String destinationAccountReference;
 

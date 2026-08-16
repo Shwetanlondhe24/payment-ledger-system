@@ -36,6 +36,11 @@ public class LedgerService {
 
     @Transactional
     public LedgerResponse processEntry(LedgerRequest req) {
+        if (entryRepo.existsByTxnId(req.getTxnId())) {
+            LedgerResponse response = new LedgerResponse();
+            response.setLedgerStatus(LedgerStatus.SUCCESS);
+            return response;
+        }
         try{
         LedgerAccount sourceAccount = accountRepo.findByAccountReference(req.getSourceAccountReference())
                 .orElseThrow(() -> new AccountNotFoundException("Source account not found: " + req.getSourceAccountReference()));
